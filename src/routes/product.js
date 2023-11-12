@@ -6,10 +6,13 @@ let id = 0
 const router = Router()
 
 router.get('/', (req, res) =>{
-    if(req.query.limit = 10){
-        res.send(res.status(200).send({ data: products }))
+
+    const limiting = req.query.limit
+
+    if(limiting = []){
+        res.send(products)
        }else{
-        res.send(products.slice(11, 100))
+        res.send(products.slice(limiting))
        }
    
 })
@@ -27,7 +30,7 @@ router.post('/', (req, res) =>{
     res.status(200).send({ data : newContent})
 })
 
-router.put('/', (req, res) =>{
+router.put('/:pid', (req, res) =>{
     const newUpdate = req.body
     products.push(newUpdate)
     products.push(pid)
